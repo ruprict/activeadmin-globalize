@@ -13,7 +13,7 @@ gem "activeadmin-globalize", github: 'anthony-robin/activeadmin-globalize'
 ## Your model
 
 ```ruby
-active_admin_translates :title, :description do
+active_admin_translates :title, :content do
   validates_presence_of :title
 end
 ```
@@ -21,14 +21,14 @@ end
 
 ```ruby
 # if you are using Rails 4 or Strong Parameters:
-permit_params translations_attributes: [:locale, :title, :content]
-
+permit_params translations_attributes: [
+                :id, :locale, :title, :content
+              ]
 
 index do
   # ...
   translation_status
-  # ...
-  default_actions
+  actions
 end
 
 form do |f|
